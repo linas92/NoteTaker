@@ -28,33 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.noteBox = new System.Windows.Forms.TextBox();
+            this.titleBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.previousNotes = new System.Windows.Forms.DataGridView();
             this.loadButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
             this.saveButton = new System.Windows.Forms.Button();
             this.newButton = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.previousNotes)).BeginInit();
             this.SuspendLayout();
             // 
-            // textBox1
+            // noteBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(386, 71);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(402, 367);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.noteBox.BackColor = System.Drawing.Color.Ivory;
+            this.noteBox.Location = new System.Drawing.Point(386, 71);
+            this.noteBox.Multiline = true;
+            this.noteBox.Name = "noteBox";
+            this.noteBox.Size = new System.Drawing.Size(402, 367);
+            this.noteBox.TabIndex = 0;
+            this.noteBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // textBox2
+            // titleBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(386, 29);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(402, 20);
-            this.textBox2.TabIndex = 1;
+            this.titleBox.BackColor = System.Drawing.Color.Ivory;
+            this.titleBox.Location = new System.Drawing.Point(386, 29);
+            this.titleBox.Name = "titleBox";
+            this.titleBox.Size = new System.Drawing.Size(402, 20);
+            this.titleBox.TabIndex = 1;
             // 
             // label1
             // 
@@ -77,24 +79,28 @@
             this.label2.Text = "Note:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // dataGridView1
+            // previousNotes
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(319, 292);
-            this.dataGridView1.TabIndex = 4;
+            this.previousNotes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.previousNotes.BackgroundColor = System.Drawing.Color.Ivory;
+            this.previousNotes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.previousNotes.Location = new System.Drawing.Point(12, 12);
+            this.previousNotes.Name = "previousNotes";
+            this.previousNotes.Size = new System.Drawing.Size(319, 292);
+            this.previousNotes.TabIndex = 4;
+            this.previousNotes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.previousNotes_CellDoubleClick);
             // 
             // loadButton
             // 
             this.loadButton.BackColor = System.Drawing.Color.Ivory;
             this.loadButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.loadButton.Location = new System.Drawing.Point(176, 310);
+            this.loadButton.Location = new System.Drawing.Point(12, 377);
             this.loadButton.Name = "loadButton";
-            this.loadButton.Size = new System.Drawing.Size(155, 61);
+            this.loadButton.Size = new System.Drawing.Size(158, 61);
             this.loadButton.TabIndex = 5;
             this.loadButton.Text = "Load";
             this.loadButton.UseVisualStyleBackColor = false;
+            this.loadButton.Click += new System.EventHandler(this.loadButton_Click);
             // 
             // deleteButton
             // 
@@ -106,17 +112,19 @@
             this.deleteButton.TabIndex = 6;
             this.deleteButton.Text = "Delete";
             this.deleteButton.UseVisualStyleBackColor = false;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // saveButton
             // 
             this.saveButton.BackColor = System.Drawing.Color.Ivory;
             this.saveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.saveButton.Location = new System.Drawing.Point(12, 377);
+            this.saveButton.Location = new System.Drawing.Point(176, 310);
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(158, 61);
+            this.saveButton.Size = new System.Drawing.Size(155, 61);
             this.saveButton.TabIndex = 7;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = false;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // newButton
             // 
@@ -128,6 +136,7 @@
             this.newButton.TabIndex = 8;
             this.newButton.Text = "New";
             this.newButton.UseVisualStyleBackColor = false;
+            this.newButton.Click += new System.EventHandler(this.newButton_Click);
             // 
             // NoteTaker
             // 
@@ -139,15 +148,15 @@
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.loadButton);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.previousNotes);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.titleBox);
+            this.Controls.Add(this.noteBox);
             this.Name = "NoteTaker";
             this.Text = "NoteTaker";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.previousNotes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -155,11 +164,11 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox noteBox;
+        private System.Windows.Forms.TextBox titleBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView previousNotes;
         private System.Windows.Forms.Button loadButton;
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Button saveButton;
