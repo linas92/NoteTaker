@@ -49,7 +49,7 @@ namespace NoteTaker
             if (editing)
             {
                 notes.Rows[previousNotes.CurrentCell.RowIndex]["Title"] = titleBox.Text;
-                notes.Rows[previousNotes.CurrentCell.RowIndex]["Note"] = titleBox.Text;
+                notes.Rows[previousNotes.CurrentCell.RowIndex]["Note"] = noteBox.Text;
             }
             else
             {
